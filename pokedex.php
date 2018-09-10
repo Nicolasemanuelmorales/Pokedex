@@ -59,8 +59,10 @@ if (isset($_POST["whoisthat"]))
 	$buscado= $_POST["whoisthat"];
 	$buscado= strtolower($buscado);
 	$buscado= ucfirst($buscado);
+	$cont=0;
 	  
-	if ( $buscado!= "" && $buscado== "Charmander" || $buscado== "Pikachu" || $buscado== "Bulbasaur") // Esta mal echo esto
+	foreach ($pokemons as $filanombre2 => $contenido2)  {
+	if ($filanombre2 == $buscado) 
 		{
 	  	echo 
 	  		"<div class='elegido'>".
@@ -80,19 +82,16 @@ if (isset($_POST["whoisthat"]))
 	  		"<div class='elegidofoto'>".
 	  			"<div class='elegido3'>".$pokemons[$buscado]["fotoespecifica"]."</div>".
 	  		"</div>";
+	  		$cont++;
 	  	}
-	  else
-	  	{
-	  	Todos ($pokemons);
-		}
+	  }
+	  		if ($cont==0) 
+	  		{
+	  			Todos ($pokemons);
+	  		}
+	  	
 }  
-		
-else
-{
-	Todos ($pokemons);
-}
-
-
+	
 
 Function Todos ($pokemons){
 	foreach ($pokemons as $filanombre => $contenido) 
