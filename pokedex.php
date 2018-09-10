@@ -54,6 +54,9 @@ $pokemons=Array("Charmander"=>array('tipo' => 'Fuego',
 
 									'fotoespecifica'=>"<img class='imagenes3' src='https://vignette.wikia.nocookie.net/pokemon-planet/images/5/5b/Bulbasaur_by_elfaceitoso.png/revision/latest?cb=20161115042430'>"));
 
+
+
+$cont=0;
 if (isset($_POST["whoisthat"])) 
 {
 	$buscado= $_POST["whoisthat"];
@@ -88,10 +91,13 @@ if (isset($_POST["whoisthat"]))
 	  		if ($cont==0) 
 	  		{
 	  			Todos ($pokemons);
+	  			$cont++;
 	  		}
-	  	
 }  
-	
+if ($cont==0) 
+	  		{
+	  			Todos ($pokemons);
+	  		}
 
 Function Todos ($pokemons){
 	foreach ($pokemons as $filanombre => $contenido) 
