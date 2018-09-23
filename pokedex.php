@@ -16,46 +16,9 @@
 </div>
 <div class="cuerpo">
 <?php
-$pokemons=Array("Charmander"=>array('tipo' => 'Fuego',
-									'tipoimagen' => "<img class='imagenes' src='https://vignette.wikia.nocookie.net/es.pokemon/images/c/ce/Tipo_fuego.gif/revision/latest?cb=20170114100331s'>",
 
-									'genero'=>'Masculino',
-									'generoimagen' => "<img class='imagenes2' src='https://png.icons8.com/metro/1600/male.png'>",
-
-									'ataque'=>'Fuego Fatuo',
-									
-
-									'foto'=>"<img class='imagenes4' src='https://vignette.wikia.nocookie.net/es.pokemon/images/b/be/Charmander_%28anime_SO%29.png/revision/latest?cb=20120906002506'>",
-
-									'fotoespecifica'=>"<img class='imagenes3' src='https://vignette.wikia.nocookie.net/es.pokemon/images/b/be/Charmander_%28anime_SO%29.png/revision/latest?cb=20120906002506'>"),
-				
-				"Pikachu"=>array(	'tipo'=>'Electrico',
-									'tipoimagen' => "<img class='imagenes' src='https://vignette.wikia.nocookie.net/es.pokemon/images/1/1b/Tipo_el%C3%A9ctrico.gif/revision/latest?cb=20170114100155'>",
-									
-									'genero'=>'Femenino',
-									'generoimagen' => "<img class='imagenes2' src='http://downloadicons.net/sites/default/files/woman-sex-symbol-icon-63284.png'>",
-
-									'ataque'=>'ImpacTrueno',
-
-									'foto'=>"<img class='imagenes4' src='https://vignette.wikia.nocookie.net/new-fantendo/images/7/77/Pikachu.png/revision/latest?cb=20141022175016&path-prefix=es'>",
-
-									'fotoespecifica'=>"<img class='imagenes3' src='https://vignette.wikia.nocookie.net/new-fantendo/images/7/77/Pikachu.png/revision/latest?cb=20141022175016&path-prefix=es'>"),
-				
-				"Bulbasaur"=>array(	'tipo'=>'Agua',
-									'tipoimagen' => "<img class='imagenes' src='https://vignette.wikia.nocookie.net/es.pokemon/images/d/d6/Tipo_planta.gif/revision/latest?cb=20170114100444'>"."<img class='imagenes' src='https://vignette.wikia.nocookie.net/es.pokemon/images/1/10/Tipo_veneno.gif/revision/latest?cb=20170114100535'>",
-
-									'genero'=>'Masculino',
-									'generoimagen' => "<img class='imagenes2' src='https://png.icons8.com/metro/1600/male.png'>",
-
-									'ataque'=>'Látigo Cepa',
-									
-
-									'foto'=>"<img class='imagenes4' src='https://vignette.wikia.nocookie.net/pokemon-planet/images/5/5b/Bulbasaur_by_elfaceitoso.png/revision/latest?cb=20161115042430'>",
-
-									'fotoespecifica'=>"<img class='imagenes3' src='https://vignette.wikia.nocookie.net/pokemon-planet/images/5/5b/Bulbasaur_by_elfaceitoso.png/revision/latest?cb=20161115042430'>"));
-
-
-
+$conn = mysqli_connect("127.0.0.1","root","","Pokedex");
+						
 $cont=0;
 if (isset($_POST["whoisthat"])) 
 {
@@ -64,51 +27,106 @@ if (isset($_POST["whoisthat"]))
 	$buscado= ucfirst($buscado);
 	$cont=0;
 	  
-	foreach ($pokemons as $filanombre2 => $contenido2)  {
-	if ($filanombre2 == $buscado) 
+	
+
+	$sql = 'select * 
+	from Pokemon';
+	$result=mysqli_query($conn, $sql);
+	$rows=mysqli_fetch_assoc($result);
+
+	if ($rows["Descripcion"] == $buscado) 
 		{
+
+		$sql = "select P.Descripcion Pokemon, P.Ataque, P.Imagen,G.Descripcion Genero,T.Descripcion Tipo,T.Imagen Imgtipo, G.Imagen Imggenero  
+				from Pokemon P 	join Genero G on G.id=P.Id_Genero 
+								Join Poke_Tipo PT on PT.Id_Pokemon=P.Id
+								Join Tipo T on T.Id=PT.Id_Tipo
+				Where P.Descripcion='".$buscado."'";
+
+		$result=mysqli_query($conn, $sql);
+
+		$rows=mysqli_fetch_assoc($result);
+
 	  	echo 
 	  		"<div class='elegido'>".
-	  			"<div class='elegido2'>".$pokemons[$buscado]["tipo"]."</div>".
-	  			"<div class='imagentipo'>".$pokemons[$buscado]["tipoimagen"]."</div>".
+	  			"<div class='elegido2'>".$rows['Pokemon']."</div>".
+	  			"<div class='imagentipo'>"."<img class='imagenes' src=".$rows['Imgtipo'].">"."</div>".
 	  		"</div>".
 
 	  		"<div class='elegido'>".
-	  			"<div class='elegido2'>".$pokemons[$buscado]["genero"]."</div>".
-	  			"<div class='imagentipo'>".$pokemons[$buscado]["generoimagen"]."</div>".
+	  			"<div class='elegido2'>".$rows['Genero']."</div>".
+	  			"<div class='imagentipo'>"."<img class='imagenes2' src=".$rows['Imggenero'].">"."</div>".
 	  		"</div>".
 
 	  		"<div class='elegido'>".
-	  			"<div class='elegido2'>".$pokemons[$buscado]["ataque"]."</div>".
+	  			"<div class='elegido2'>".$rows['Ataque']."</div>".
 	  		"</div>".
 
 	  		"<div class='elegidofoto'>".
-	  			"<div class='elegido3'>".$pokemons[$buscado]["fotoespecifica"]."</div>".
+	  			"<div class='elegido3'>"."<img class='imagenes3' src=".$rows['Imagen'].">"."</div>".
 	  		"</div>";
 	  		$cont++;
-	  	}
-	  }
-	  		if ($cont==0) 
-	  		{
-	  			Todos ($pokemons);
-	  			$cont++;
-	  		}
-}  
-if ($cont==0) 
-	  		{
-	  			Todos ($pokemons);
-	  		}
+	  	} 
+	  
+	if ($cont==0) 
+	{
+		$sql = 'select * 
+		from Pokemon';
 
-Function Todos ($pokemons){
-	foreach ($pokemons as $filanombre => $contenido) 
-	  		{	
-				
+		$result=mysqli_query($conn, $sql);
+
+			while($rows=mysqli_fetch_assoc($result))
+			{
+
+				$imagen=$rows['Imagen'];
 				echo
 				"<div class='caja'>".
-	  			"<div class='poke'>".$filanombre."</div>".
-	  			"<div class='imggeneral'>".$contenido["foto"]."</div>".
-	  			"</div>";
-			}}
+				"<div class='poke'>".$rows['Descripcion']."</div>".
+				"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
+				"</div>";
+			}	
+		$cont++;	  		
+	}
+  
+	if ($cont==0) 
+	{
+	$sql = 'select * 
+	from Pokemon';
+
+	$result=mysqli_query($conn, $sql);
+
+	while($rows=mysqli_fetch_assoc($result))
+	{
+
+	$imagen=$rows['Imagen'];
+	echo
+	"<div class='caja'>".
+	"<div class='poke'>".$rows['Descripcion']."</div>".
+	"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
+	"</div>";
+	}	
+	 }
+}
+
+if ($cont==0) 
+	{
+	$sql = 'select * 
+	from Pokemon';
+
+	$result=mysqli_query($conn, $sql);
+
+	while($rows=mysqli_fetch_assoc($result))
+	{
+
+	$imagen=$rows['Imagen'];
+	echo
+	"<div class='caja'>".
+	"<div class='poke'>".$rows['Descripcion']."</div>".
+	"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
+	"</div>";
+	
+	}	
+	 }
 ?>
 
 </div>
