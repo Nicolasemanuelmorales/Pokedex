@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+   <link rel="stylesheet" type="text/css" href="recursos/css/estilo.css">
     <title>Nuevo</title>
 </head>
 <body>

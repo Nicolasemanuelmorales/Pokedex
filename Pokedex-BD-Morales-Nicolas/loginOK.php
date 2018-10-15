@@ -1,23 +1,27 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="recursos/css/estilo.css">
 	<title>Example</title>
 </head>
 <body>
 
 	<div class="cabeza">
-		<div class="text2"><a href="login.php"> Iniciar Sesion </a></div>
+		
 		<div class="text1">POKEDEX</div>
 		<div class="buscador"> 	
-			<form method="POST" action="pokedex.php" >
+			<form method="POST" action="loginok.php" >
 				<input class="busca" type="text" name="whoisthat" autofocus>
 			</form>
 		</div>
 	</div>
 	<div class="cuerpo">
 		<?php
-
+		
 		$conn = mysqli_connect("127.0.0.1","root","","Pokemons_Morales_Nicolas");
 		
 		$cont=0;
@@ -85,8 +89,15 @@
 						"<div class='poke'>".$rows['Descripcion']."</div>".
 						"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
 						"</div>";
+
+
 					}	
-					$cont++;	  		
+					$cont++;	  	
+					echo 	"<div class='cajota1'>".
+							"<div class='cajota'>"."<a href='nuevo.php'>"."<button class='butenviar'>"."NUEVO"."</button>"."</a>"."</div>".
+						 	"<div class='cajota'>"."<a href='modificar.php'>"."<button class='butenviar'>"."MODIFICAR"."</button>"."</a>"."</div>".	
+						 	"<div class='cajota'>"."<a href='eliminar.php'>"."<button class='butenviar'>"."ELIMINAR"."</button>"."</a>"."</div>".
+						 	"</div>";			
 				}
 				
 			}
@@ -105,9 +116,15 @@
 					"<div class='poke'>".$rows['Descripcion']."</div>".
 					"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
 					"</div>";
-				}	
+				}
+					echo 	"<div class='cajota1'>".
+							"<div class='cajota'>"."<a href='nuevo.php'>"."<button class='butenviar'>"."NUEVO"."</button>"."</a>"."</div>".
+						 	"<div class='cajota'>"."<a href='modificar.php'>"."<button class='butenviar'>"."MODIFICAR"."</button>"."</a>"."</div>".	
+						 	"<div class='cajota'>"."<a href='eliminar.php'>"."<button class='butenviar'>"."ELIMINAR"."</button>"."</a>"."</div>".
+						 	"</div>";			
 			}
 			?>
+			
 		</div>
 
 	</body>

@@ -46,5 +46,3 @@ Values
 
 Insert Into Poke_Tipo(Id_Tipo, Id_Pokemon)
 Values(1,1),(2,2),(3,3);
-
-

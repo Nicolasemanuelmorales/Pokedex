@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+   <link rel="stylesheet" type="text/css" href="recursos/css/estilo.css">
     <title>Nuevo</title>
 </head>
 <body>
@@ -45,7 +44,7 @@
                     </select><br>
 
                     <input class="bot2" src="adminindex.php" name="cerrar" type="submit" value="Cancelar">
-                    <input class="bot2" type="submit" name="enviar" value="Modificar">
+                    <input class="bot2" type="submit" name="enviar" value="Crear">
                 </form>
            </article>
         </section>
@@ -53,13 +52,6 @@
     <?php
         if(isset($_POST["enviar"])){
             
-            if($_POST['nombre']== null || $_POST["imagen"]== null || $_POST["sexo"]== null || $_POST["tipo"]== null || $_POST["ataque"]== null || $_POST["id"]== null)
-            {   
-                echo "<p class='incorrecto'>Datos Incorrectos</p>";
-            }
-
-            else{
-
              $tipo=$_POST['tipo'];
              $sexo=$_POST['sexo'];
             switch ($sexo) 
@@ -106,28 +98,24 @@
             $asd=mysqli_fetch_assoc($result);
 
             
-                if(($asd['Id']==$id)){
+            if(!($asd['Id']==$id)){
                 
-                $sql2="update Pokemon set Descripcion='$nombre',imagen='$imagen',Id_Genero='$sexo', Ataque='$ataque' where id='$id'";        
+                $sql2="Insert Into Pokemon (Id, Descripcion, Ataque, Imagen, Id_Genero) values('$id','$nombre','$ataque','$imagen','$sexo')";        
                 $result=mysqli_query($conn,$sql2);
 
-                $sql3="update Poke_Tipo set Id_Tipo='$tipo', Id_Pokemon='$id'"; 
+                $sql3="Insert Into Poke_Tipo(Id_Tipo, Id_Pokemon) Values('$id','$tipo')";
                 $result=mysqli_query($conn,$sql3);
 
-                echo "<p class='incorrecto'>Editado Correctamente</p>";
-                } 
-
-                else{
-                     echo "<p class='incorrecto'>Datos Incorrectos</p>";
-                }   
-         }  
-
+                echo "<p class='labelform editado'>Guardado Correctamente</p>";
+                
+            }
+            else{
+                echo "<p class='labelform editado'>Codigo Existente</p>";
+            }
+        }
         if(isset($_POST["cerrar"])){
             header('location:loginok.php');
-        }}
-
-        if(isset($_POST["cerrar"])){
-            header('location:loginok.php');}
+        }
     ?>
 </body>
 </html>
