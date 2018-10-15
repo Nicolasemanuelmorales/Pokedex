@@ -1,0 +1,315 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.buscador{
+	width: 100%;
+	height: 75px;
+	float: right;
+	text-align: center;
+	font: bold 25px Arial;
+}
+.cabeza{
+	margin: 0 auto;
+	margin-top: 15px; 
+	width: 30%;
+	height: 120px;
+	background: #CB4335;
+	border-radius: 40px 40px 0px 0px;
+	box-shadow: 5px 25px 40px #6e6e6e;
+	border: solid 1px #6e6e6e;
+	border-bottom: none;
+}
+.cuerpo{
+	width: 30%;
+	height: 400px;
+	margin: 0 auto;
+	background: #CB4335;
+	border-radius: 0px 0px 40px 40px;
+	box-shadow: 5px 25px 40px #6e6e6e;
+	border: solid 1px #6e6e6e;
+	border-top: none; 
+}
+.imagenes{
+	width: 50px;
+}
+.imagenes2{
+	width: 30px;
+	height: 30px;
+}
+.buscador{
+	margin-top: 15px;
+	width: 100%;
+	height: 32px;
+	text-align: center;
+}
+.text1{
+	padding-top: 15px;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	font: bold 50px Verdana;
+	text-shadow: -2px -2px 2px white,  2px -2px 2px white, -2px 2px 2px white, 2px 2px 2px white;
+}
+.busca{
+	width: 95%;
+	height: 20px;
+	font: italic 17px Verdana;
+	border: solid 3px white ;
+	background: #EDBB99;
+}
+
+
+.elegido{
+	margin: 0 auto;
+	width: 60%;
+	height: 70px;
+	background: #CB4335
+	;
+}
+.elegidofoto{
+	margin: 0 auto;
+	width: 40%;
+	height: 170px;
+	background: #CB4335;
+}
+.elegido2{
+	margin-top:10px;
+	float: left;
+	width: 80%;
+	height: 30px;
+	background: #CB4335;
+	font:  22px Verdana;
+	color: white;
+	text-align: left;
+}	
+.imagentipo{
+	margin-top:13px;
+	float: left;
+	width: 20%;
+	height: 19px;
+	background: #CB4335;
+	text-align: center;
+}
+.elegido3{
+	width: 100%;
+	height: 170px;
+	background: #EC7063;
+	font: bold 23px Verdana;
+	text-align: center;
+	border: solid 3px white;
+}
+.imagenes3{
+	width:100%;
+	height:100%;
+}	
+.caja{
+
+	margin: 0 auto;
+	width: 70%;
+	height: 100px;
+	background: #CB4335;
+}
+.poke{
+	float: left;
+	width: 50%;
+	height: 25px;
+	background: #CB4335;
+	font: 20px Verdana;
+	margin-top: 35px;
+	text-align: left;
+}
+.imggeneral{
+	float: right;
+	width: 20%;
+	height: 50px;
+	background: #CB4335;
+	text-align: right;
+	margin-top: 20px;
+}
+.imagenes4{
+	width: 100%;
+	
+}
+.pne{
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	
+}
+
+@media only screen and (max-width: 900px) {
+    .text1 {
+        font-size: 35px;
+    }
+}
+.text2{
+	width: 100%;
+	height: 20px;
+	margin-top: 10px;	
+	font: normal 12px Verdana;
+	text-align: center;
+	padding-right: 30px;
+	color: #009eed;
+}
+.text2 a{
+	color: white;
+}
+
+.cajita{
+	width: 300px;
+	height: 120px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 10px;
+	padding-top: 20px;
+	text-align: center;
+	border:solid 1px #CB4335;
+	border-radius: 12px;
+}
+
+.box1{
+	width: 100%;
+	height:20px;
+}
+.box2{
+	width: 30%;
+	height:20px;
+	float: left;
+	margin-bottom: 20px;
+	text-align: right;
+}
+.box3{
+	width: 70%;
+	height:20px;
+	float: right;
+	margin-bottom: 20px;
+}
+
+.bot{
+	width: 60px;
+	height: 25px;
+float: right;
+background: #CB4335;
+border:solid 1px #BFC9CA;
+color: white;
+border-radius: 12px;
+}
+
+.inputform{
+	border:solid 1px #CB4335;
+}
+
+.incorrecto{
+	margin-top: 50px;
+	width: 300px;
+	height: 22px;
+	margin: 0 auto;
+	margin-top: 50px;
+	background: red;
+	text-align: center;
+	border:solid 1px #BFC9CA;
+	border-radius: 12px;
+	background: #CB4335;
+	color: white;
+	padding-top: 4px;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .cabeza ,.cuerpo {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .cabeza ,.cuerpo {
+        width: 60%;
+    }
+}
+
+.cajota1{
+	width: 84%;
+	height: 27px;
+	margin: 0 auto;	
+	text-align: center;
+	padding-left: 6px;
+}
+
+
+.cajota{
+	
+	height: 25px;
+	float: left;
+	margin: 0 auto;
+	padding-right: 10px; 
+}
+.butenviar{
+
+	font: BOLD 17px Verdana;
+	border: solid 3px white ;
+	background: #EDBB99;
+	color: black;	
+	margin-left: 4px;
+	
+}
+
+.bot2{
+	width: 70px;
+	height: 25px;
+background: #CB4335;
+border:solid 1px #BFC9CA;
+color: white;
+float: right;
+border-radius: 12px;
+}
+
+.cajita2{
+	width: 300px;
+	height: 230px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 10px;
+	padding-top: 20px;
+	text-align: center;
+	border:solid 1px #CB4335;
+	border-radius: 12px;
+}
+
+.selectform2{
+	width: 35%;
+	float: right;	
+	margin-top: 10px;
+	margin-right: 15px;
+	margin-bottom: 20px;
+}
+
+.cajita3{
+	width: 350px;
+	height: 70px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 10px;
+	padding-top: 20px;
+	text-align: center;
+	border:solid 1px #CB4335;
+	border-radius: 12px;
+}
+.box11{
+	width: 100%;
+	height:20px;
+}
+.box22{
+	width: 50%;
+	height:20px;
+	float: left;
+	margin-bottom: 20px;
+	text-align: left;
+}
+.box33{
+	width: 50%;
+	height:20px;
+	float: right;
+	margin-bottom: 20px;
+}

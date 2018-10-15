@@ -1,5 +1,5 @@
-Create Database Pokedex;
-Use Pokedex;
+Create Database  Pokemons_Morales_Nicolas;
+Use Pokemons_Morales_Nicolas;
 
 Create Table Genero(
 Id Tinyint PRIMARY KEY,
@@ -36,7 +36,7 @@ Insert Into Tipo (Id, Descripcion, Imagen)
 Values 
 (1,"Fuego","https://vignette.wikia.nocookie.net/es.pokemon/images/c/ce/Tipo_fuego.gif/revision/latest?cb=20170114100331s"),
 (2,"Electrico","https://vignette.wikia.nocookie.net/es.pokemon/images/1/1b/Tipo_el%C3%A9ctrico.gif/revision/latest?cb=20170114100155"),
-(3,"Agua"," https://vignette.wikia.nocookie.net/pokemon-planet/images/5/5b/Bulbasaur_by_elfaceitoso.png/revision/latest?cb=20161115042430");
+(3,"Planta"," https://vignette.wikia.nocookie.net/es.pokemon/images/d/d6/Tipo_planta.gif/revision/latest?cb=20170114100444");
 
 Insert Into Pokemon (Id, Descripcion, Ataque, Imagen, Id_Genero)
 Values  
@@ -46,3 +46,5 @@ Values
 
 Insert Into Poke_Tipo(Id_Tipo, Id_Pokemon)
 Values(1,1),(2,2),(3,3);
+
+

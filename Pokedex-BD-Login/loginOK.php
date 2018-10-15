@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +11,18 @@
 <body>
 
 	<div class="cabeza">
+		
 		<div class="text1">POKEDEX</div>
 		<div class="buscador"> 	
-			<form method="POST" action="pokedex.php" >
+			<form method="POST" action="loginok.php" >
 				<input class="busca" type="text" name="whoisthat" autofocus>
 			</form>
 		</div>
 	</div>
 	<div class="cuerpo">
 		<?php
-
-		$conn = mysqli_connect("127.0.0.1","root","","Pokedex");
+		
+		$conn = mysqli_connect("127.0.0.1","root","","Pokemons_Morales_Nicolas");
 		
 		$cont=0;
 		if (isset($_POST["whoisthat"])) 
@@ -40,7 +45,7 @@
 					from Pokemon P 	join Genero G on G.id=P.Id_Genero 
 					Join Poke_Tipo PT on PT.Id_Pokemon=P.Id
 					Join Tipo T on T.Id=PT.Id_Tipo
-					Where P.Descripcion='".$buscado."'";
+					Where P.Descripcion='$buscado'";
 
 					$result=mysqli_query($conn, $sql);
 
@@ -69,6 +74,7 @@
 				
 				if ($cont==0) 
 				{
+					echo "<div class='pne'>".'¡ POKEMON NO ENCONTRADO !'."</div>";
 					$sql = 'select * 
 					from Pokemon';
 
@@ -83,30 +89,18 @@
 						"<div class='poke'>".$rows['Descripcion']."</div>".
 						"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
 						"</div>";
+
+
 					}	
-					$cont++;	  		
+					$cont++;	  	
+					echo 	"<div class='cajota1'>".
+							"<div class='cajota'>"."<a href='nuevo.php'>"."<button class='butenviar'>"."NUEVO"."</button>"."</a>"."</div>".
+						 	"<div class='cajota'>"."<a href='modificar.php'>"."<button class='butenviar'>"."MODIFICAR"."</button>"."</a>"."</div>".	
+						 	"<div class='cajota'>"."<a href='eliminar.php'>"."<button class='butenviar'>"."ELIMINAR"."</button>"."</a>"."</div>".
+						 	"</div>";			
 				}
 				
-				if ($cont==0) 
-				{
-					$sql = 'select * 
-					from Pokemon';
-
-					$result=mysqli_query($conn, $sql);
-
-					while($rows=mysqli_fetch_assoc($result))
-					{
-
-						$imagen=$rows['Imagen'];
-						echo
-						"<div class='caja'>".
-						"<div class='poke'>".$rows['Descripcion']."</div>".
-						"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
-						"</div>";
-					}	
-				}
 			}
-
 			if ($cont==0) 
 			{
 				$sql = 'select * 
@@ -116,18 +110,21 @@
 
 				while($rows=mysqli_fetch_assoc($result))
 				{
-
 					$imagen=$rows['Imagen'];
 					echo
 					"<div class='caja'>".
 					"<div class='poke'>".$rows['Descripcion']."</div>".
 					"<div class='imggeneral'>"."<img class='imagenes4' src=".$imagen.">"."</div>".
 					"</div>";
-					
-				}	
+				}
+					echo 	"<div class='cajota1'>".
+							"<div class='cajota'>"."<a href='nuevo.php'>"."<button class='butenviar'>"."NUEVO"."</button>"."</a>"."</div>".
+						 	"<div class='cajota'>"."<a href='modificar.php'>"."<button class='butenviar'>"."MODIFICAR"."</button>"."</a>"."</div>".	
+						 	"<div class='cajota'>"."<a href='eliminar.php'>"."<button class='butenviar'>"."ELIMINAR"."</button>"."</a>"."</div>".
+						 	"</div>";			
 			}
 			?>
-
+			
 		</div>
 
 	</body>
